@@ -26,7 +26,7 @@ const MainComponent = React.createClass({
   render(){
     return (
       <div>
-        <button onClick={this.getTitle}>GetMovie</button><br/>
+        <button className="btn btn-primary" onClick={this.getTitle}>Get Movie</button>
         <MovieInfo movie={this.state.movie} getTitle={this.getTitle}/>
       </div>
     );
@@ -40,28 +40,29 @@ const MovieInfo = React.createClass({
   //   }
   // },
   render(){
-    if(this.props.movie === {}){
-      //this.props.getTitle();
-      return(
-        <div>
-          <h2>Loading ...</h2>
-        </div>
-      );
-    }else{
+    // if(this.props.movie === {}){
+    //   //this.props.getTitle();
+    //   return(
+    //     <div>
+    //       <h2>Loading ...</h2>
+    //     </div>
+    //   );
+    // }else{
     // let plot='Plot : '+this.props.movie.Plot;
     // let genre = 'Genre : '+this.props.movie.Genre;
 
       return (
         <div>
-          <span>{this.props.movie.Title} </span>
-          <span>({this.props.movie.Year})</span>
-          <p>{this.props.movie.Rated}</p>
+          <br/>
+          <p className="movieTitle">{this.props.movie.Title}</p>
+          <span className="movieYear">{this.props.movie.Year} </span>
+          <span className="movieRating">{this.props.movie.Rated}</span>
           <p>{this.props.movie.Runtime}</p>
-          <p>{this.props.movie.Plot}</p>
           <p>{this.props.movie.Genre}</p>
+          <p className="plot">{this.props.movie.Plot}</p>
         </div>
       );
-    }
+    // }
   }
 });
 

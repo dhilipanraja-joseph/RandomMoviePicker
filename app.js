@@ -29,7 +29,9 @@ app.get('/getid',(req,res)=>{
       //var html=body;
       let $ = cheerio.load(body);
       let movieId = $('meta[property="pageId"]').attr('content');
-      //console.log("movie id:",movieTitle);
+      let type = $('meta[property="og:type"]').attr('content');
+      //let year = $();
+      console.log("type:",type);
       res.send({movieId});
     })
     //res.send();
