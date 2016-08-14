@@ -25,6 +25,7 @@ app.get('/',(req,res)=>{
 
 app.get('/getid',(req,res)=>{
   try{
+    //let arr = [];
     request(target,function(err,resquest,body){
       //var html=body;
       let $ = cheerio.load(body);
@@ -35,6 +36,28 @@ app.get('/getid',(req,res)=>{
       // console.log(imglink);
       // console.log("type:",type);
       res.send({movieId,imglink});
+
+      // request(target,function(err,resquest,body){
+      //   //var html=body;
+      //   let $1 = cheerio.load(body);
+      //   let movieId1 = $1('meta[property="pageId"]').attr('content');
+      //   let type = $1('meta[property="og:type"]').attr('content');
+      //   let imglink = $1('link[rel="image_src"]').attr('href');
+      //   //let year = $();
+      //   // console.log(imglink);
+      //   // console.log("type:",type);
+      //   res.send({movieId1,imglink});
+      //
+      //   request(target,function(err,resquest,body){
+      //     //var html=body;
+      //     let $2 = cheerio.load(body);
+      //     let movieId = $2('meta[property="pageId"]').attr('content');
+      //     let type = $2('meta[property="og:type"]').attr('content');
+      //     let imglink = $2('link[rel="image_src"]').attr('href');
+      //     //let year = $();
+      //     // console.log(imglink);
+      //     // console.log("type:",type);
+      //     res.send({movieId,imglink});
     })
     //res.send();
   }catch(e){

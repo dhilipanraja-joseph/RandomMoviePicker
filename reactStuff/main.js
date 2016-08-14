@@ -56,7 +56,7 @@ const MovieInfo = React.createClass({
       return (
         <div className="mainDiv">
           <br/>
-          <img width="251" src={this.props.movObj.imglink}/>
+          <img width="251" src={this.props.movie.Poster}/>
           <p className="movieTitle">{this.props.movie.Title}</p>
           <span className="movieYear">{this.props.movie.Released} </span>
           <span className="movieRating">{this.props.movie.Rated}</span>
