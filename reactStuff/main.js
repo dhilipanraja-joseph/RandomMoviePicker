@@ -59,7 +59,8 @@ const MovieInfo = React.createClass({
           <img width="251" src={this.props.movie.Poster}/>
           <p className="movieTitle">{this.props.movie.Title}</p>
           <span className="movieYear">{this.props.movie.Released} </span>
-          <span className="movieRating">{this.props.movie.Rated}</span>
+          <span className="movieRating">{this.props.movie.Rated}</span><br/><br/>
+          <p><a href={"http://www.imdb.com/title/"+`${this.props.movie.imdbID}`}>IMDB</a></p>
           <p>{this.props.movie.Runtime}</p>
           <p>{this.props.movie.Genre}</p>
           <p className="plot">{this.props.movie.Plot}</p>
