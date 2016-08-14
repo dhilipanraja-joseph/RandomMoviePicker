@@ -35,7 +35,7 @@ const MainComponent = React.createClass({
       $.ajax({
         url : `http://www.omdbapi.com/?i=${obj.movieId}`,
       }).done(movieInfo=>{
-        this.setState({ movie : movieInfo});
+        this.setState({ movie : movieInfo,button : "Add To WatchList"});
       }).fail(err=>console.log(err));
     //  this.setState({movie : obj});
   }).fail(err=>console.log(err));
@@ -47,9 +47,13 @@ const MainComponent = React.createClass({
   render(){
     return (
       <div>
-        <button className="btn btn-primary" onClick={this.getTitle}>Get Movie</button>
+        <button className="getMovieButton btn btn-primary" onClick={this.getTitle}>Get Movie</button>
         {/* <button className="btn btn-primary" data-toggle="modal" data-target="#myModal">WatchList</button> */}
-        <MovieInfo movie={this.state.movie} movObj={this.state.movObj} addMovie={this.addMovie} removeMovie={this.removeMovie}/>
+        <MovieInfo
+          movie={this.state.movie}
+          movObj={this.state.movObj}
+          addMovie={this.addMovie}
+          removeMovie={this.removeMovie}/>
         <br/><br/>
         <WatchList data={this.state.movieList} removeMovie={this.removeMovie}/>
       </div>
@@ -83,7 +87,7 @@ const WatchList = React.createClass({
       // </div>
       let watchlist = this.props.data.map(movie=>{
         return (
-          <tr><td>{movie}</td><td><button className="btn btn-danger btn-xs" value={movie} onClick={this.delete}>Remove</button></td></tr>
+          <tr><td>{movie}</td><td><button className="btn btn-danger btn-xs" value={movie} onClick={this.delete}>X</button></td></tr>
         );
       });
       return (
@@ -109,12 +113,12 @@ const MovieInfo = React.createClass({
   },
   removeFromlist(e){
     this.props.removeMovie(e.target.value);
-    console.log('remove movie');
+    //console.log('remove movie');
     this.setState({button : 'Add To WatchList',click : this.addTolist});
   },
   addTolist(e){
     this.props.addMovie(e.target.value);
-    console.log('add movie');
+    //console.log('add movie');
     this.setState({button : 'Remove From WatchList',click : this.removeFromlist});
   },
   render(){
