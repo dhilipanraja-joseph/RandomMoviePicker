@@ -30,9 +30,11 @@ app.get('/getid',(req,res)=>{
       let $ = cheerio.load(body);
       let movieId = $('meta[property="pageId"]').attr('content');
       let type = $('meta[property="og:type"]').attr('content');
+      let imglink = $('link[rel="image_src"]').attr('href');
       //let year = $();
+      console.log(imglink);
       console.log("type:",type);
-      res.send({movieId});
+      res.send({movieId,imglink});
     })
     //res.send();
   }catch(e){

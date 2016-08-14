@@ -3,17 +3,19 @@
 const MainComponent = React.createClass({
   getInitialState(){
     return{
-      movie : {}
+      movie : {},
+      movObj : {}
     };
   },
-  componentDidUpdate(){
-    //console.log(this.state.movie);
-  },
+  // componentDidUpdate(){
+  //   //console.log(this.state.movie);
+  // },
   getTitle(){
     $.ajax({
       url : '/getId',
       method : 'GET'
     }).done(obj=>{
+      this.setState({movObj : obj});
       $.ajax({
         url : `http://www.omdbapi.com/?i=${obj.movieId}`,
       }).done(movieInfo=>{
@@ -27,7 +29,7 @@ const MainComponent = React.createClass({
     return (
       <div>
         <button className="btn btn-primary" onClick={this.getTitle}>Get Movie</button>
-        <MovieInfo movie={this.state.movie} getTitle={this.getTitle}/>
+        <MovieInfo movie={this.state.movie} movObj={this.state.movObj} getTitle={this.getTitle}/>
       </div>
     );
   }
@@ -52,10 +54,11 @@ const MovieInfo = React.createClass({
     // let genre = 'Genre : '+this.props.movie.Genre;
 
       return (
-        <div>
+        <div className="mainDiv">
           <br/>
+          <img width="251" src={this.props.movObj.imglink}/>
           <p className="movieTitle">{this.props.movie.Title}</p>
-          <span className="movieYear">{this.props.movie.Year} </span>
+          <span className="movieYear">{this.props.movie.Released} </span>
           <span className="movieRating">{this.props.movie.Rated}</span>
           <p>{this.props.movie.Runtime}</p>
           <p>{this.props.movie.Genre}</p>
