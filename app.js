@@ -32,8 +32,8 @@ app.get('/getid',(req,res)=>{
       let type = $('meta[property="og:type"]').attr('content');
       let imglink = $('link[rel="image_src"]').attr('href');
       //let year = $();
-      console.log(imglink);
-      console.log("type:",type);
+      // console.log(imglink);
+      // console.log("type:",type);
       res.send({movieId,imglink});
     })
     //res.send();
